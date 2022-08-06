@@ -10,6 +10,8 @@ interface ICountContract {
     function increment() external;
 
     function decrement() external;
+
+    function getCount() external returns (uint256);
 }
 
 contract ContractTest is Test {
@@ -17,12 +19,12 @@ contract ContractTest is Test {
     ICountContract countContract;
 
     function setUp(uint initialVal) public {
-        countContract = ICountContract(deployer.deployContract('CountContract', [initialVal]));
+        countContract = ICountContract(deployer.deployContract('CountContract', abi.encode(1234)));
     }
 
     function testIncrement() public {
         countContract.increment();
-        emit log_int(countContract.count());
+        emit log_uint(countContract.getCount());
         // assertEq(countContract.count(), 2);
     }
 }

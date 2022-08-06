@@ -2,7 +2,7 @@ count: public(uint256)
 
 @external
 def __init__(_count: uint256):
-    self.count = _count
+    self.count = 1
 
 @external
 def setCount(_count: uint256):
@@ -15,3 +15,7 @@ def increment():
 @external
 def decrement():
     self.count -= 1
+
+@external
+def getCount():
+    return self.count
