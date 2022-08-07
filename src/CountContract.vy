@@ -17,5 +17,5 @@ def decrement():
     self.count -= 1
 
 @external
-def getCount():
+def getCount() -> uint256: 
     return self.count

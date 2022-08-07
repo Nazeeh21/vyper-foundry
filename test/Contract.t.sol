@@ -16,6 +16,16 @@ contract ContractTest is Test {
     function testIncrement() public {
         countContract.increment();
         emit log_uint(countContract.getCount());
-        // assertEq(countContract.count(), 2);
+        assertEq(countContract.getCount(), 2);
+    }
+
+    function testDecrement() public {
+        countContract.decrement();
+        assertEq(countContract.getCount(), 0);
+    }
+
+    function testSetCount() public {
+        countContract.setCount(5);
+        assertEq(countContract.getCount(), 5);
     }
 }
